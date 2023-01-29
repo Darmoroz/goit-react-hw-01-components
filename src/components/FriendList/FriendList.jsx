@@ -1,13 +1,28 @@
+import PropTypes from 'prop-types';
+import { Stats } from '../Statistics/Statistics.styled';
+import { Friend, Circle } from './FriendList.styled';
+
 export const FriendList = ({ friends }) => {
   return (
-    <ul class="friend-list">
+    <Stats>
       {friends.map(({ avatar, name, isOnline, id }) => (
-        <li key={id} class="item">
-          <span class="status"></span>
-          <img class="avatar" src={avatar} alt={`${name} avatar`} width="48" />
-          <p class="name">{name}</p>
-        </li>
+        <Friend key={id}>
+          <Circle status={isOnline}></Circle>
+          <img src={avatar} alt={`${name} avatar`} width="48" />
+          <p>{name}</p>
+        </Friend>
       ))}
-    </ul>
+    </Stats>
   );
+};
+
+FriendList.propTypes = {
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      isOnline: PropTypes.bool.isRequired,
+      id: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
 };

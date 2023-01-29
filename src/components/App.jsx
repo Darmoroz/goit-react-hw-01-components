@@ -1,8 +1,9 @@
 import { Profile } from 'components/Profile/Profile';
 import { Statistics } from 'components/Statistics/Statistics';
 import { FriendList } from 'components/FriendList/FriendList';
-// import { Container } from 'components/Container/Container';
 import { TransactionHistory } from 'components/TransactionHistory/TransactionHistory';
+// import { Container } from 'components/Container/Container';
+import { StyledContainer } from 'components/Container/Container.styled';
 
 import user from 'assets/user.json';
 import data from 'assets/data.json';
@@ -12,8 +13,7 @@ import transactions from 'assets/transactions.json';
 export const App = () => {
   const { username, tag, location, avatar, stats } = user;
   return (
-    <>
-      {/* <Container> */}
+    <StyledContainer>
       <Profile
         username={username}
         tag={tag}
@@ -24,7 +24,6 @@ export const App = () => {
       <Statistics title="upload stats" stats={data} />
       <FriendList friends={friends} />
       <TransactionHistory items={transactions} />
-      {/* </Container> */}
-    </>
+    </StyledContainer>
   );
 };

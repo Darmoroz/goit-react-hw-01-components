@@ -1,5 +1,18 @@
 import PropTypes from 'prop-types';
+import { GiShadowFollower } from 'react-icons/gi';
+import { GrFormView } from 'react-icons/gr';
+import { AiFillLike } from 'react-icons/ai';
+import { theme } from 'constants';
+import {
+  Card,
+  Info,
+  InfoName,
+  StatsList,
+  StatsItem,
+  Chip,
+} from './Profile.styled';
 
+const { fontSize, spacing } = theme;
 export const Profile = ({
   username,
   tag,
@@ -8,29 +21,36 @@ export const Profile = ({
   stats: { followers, views, likes },
 }) => {
   return (
-    <div class="profile">
-      <div class="description">
-        <img src={avatar} alt={`${username} avatar`} class="avatar" />
-        <p class="name">{username}</p>
-        <p class="tag">@{tag}</p>
-        <p class="location">{location}</p>
-      </div>
+    <Card>
+      <Info>
+        <img
+          src={avatar}
+          alt={`${username} avatar`}
+          width={`${spacing[4] * 10}px`}
+        />
+        <InfoName username>{username}</InfoName>
+        <InfoName>@{tag}</InfoName>
+        <InfoName>{location}</InfoName>
+      </Info>
 
-      <ul class="stats">
-        <li>
-          <span class="label">Followers</span>
-          <span class="quantity">{followers}</span>
-        </li>
-        <li>
-          <span class="label">Views</span>
-          <span class="quantity">{views}</span>
-        </li>
-        <li>
-          <span class="label">Likes</span>
-          <span class="quantity">{likes}</span>
-        </li>
-      </ul>
-    </div>
+      <StatsList>
+        <StatsItem>
+          <Chip>Followers</Chip>
+          <GiShadowFollower size={fontSize.md} />
+          <Chip num>{followers}</Chip>
+        </StatsItem>
+        <StatsItem>
+          <Chip>Views</Chip>
+          <GrFormView size={fontSize.md} />
+          <Chip num>{views}</Chip>
+        </StatsItem>
+        <StatsItem>
+          <Chip>Likes</Chip>
+          <AiFillLike size={fontSize.md} />
+          <Chip num>{likes}</Chip>
+        </StatsItem>
+      </StatsList>
+    </Card>
   );
 };
 
@@ -43,5 +63,5 @@ Profile.propTypes = {
     followers: PropTypes.number.isRequired,
     views: PropTypes.number.isRequired,
     likes: PropTypes.number.isRequired,
-  }),
+  }).isRequired,
 };
