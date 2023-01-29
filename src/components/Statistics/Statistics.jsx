@@ -9,7 +9,7 @@ export const Statistics = ({ title, stats }) => {
 
       <Stats>
         {stats.map(({ id, label, percentage }) => (
-          <StatsItem key={id} backgroundColor={getRandomHexColor()}>
+          <StatsItem key={id} backgroundColor={getRandomHexColor}>
             <span>{label}</span>
             <span>{percentage}%</span>
           </StatsItem>

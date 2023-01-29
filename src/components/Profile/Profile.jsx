@@ -28,7 +28,7 @@ export const Profile = ({
           alt={`${username} avatar`}
           width={`${spacing[4] * 10}px`}
         />
-        <InfoName username>{username}</InfoName>
+        <InfoName username={username}>{username}</InfoName>
         <InfoName>@{tag}</InfoName>
         <InfoName>{location}</InfoName>
       </Info>
